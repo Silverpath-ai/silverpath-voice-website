@@ -4,69 +4,56 @@ import { Button } from "@/components/ui/button";
 
 const plans = [
   {
-    name: "Starter",
-    label: "first step into AI call handling",
-    setup: "£997 setup",
-    price: "£297",
+    name: "Core",
+    label: "for call-driven UK service businesses",
+    setup: "£597 one-off setup",
+    minTerm: "Minimum term: 3 months",
+    price: "£497",
     period: "/month",
-    included: "300 AI minutes included",
-    subline: "For solo practitioners and small owner-operated UK businesses.",
+    included: "600 AI minutes included",
+    subline: "For clinics, aesthetics, physio, estate agents, trades, and local services.",
     bullets: [
-      "24/7 overflow and after-hours call handling",
-      "One inbound AI receptionist",
-      "Up to 10 FAQs answered (hours, pricing ranges, location, etc.)",
-      "Booking into Google Calendar or Calendly",
-      "One UK number or call-forwarding from your existing line",
-      "Two rounds of revisions pre-launch",
+      "24/7 inbound call handling for main line (overflow/after-hours)",
+      "One inbound AI receptionist (\"Silvia\")",
+      "Booking into Google Calendar, Calendly, Cliniko or Phorest",
+      "Integration with one supported CRM or booking system",
+      "Automatic lead capture and CRM updates from every call",
+      "Call summaries by email after each conversation",
+      "Up to 20 FAQs configured",
+      "One UK number provided or call-forwarding",
+      "Two rounds of script revisions before launch",
       "30-day optimisation check-in",
-      "Email support",
-      "Overage minutes at £0.18/min"
+      "Email support & monthly performance summary",
+      "Overage minutes at £0.17/min"
     ],
-    cta: "Talk about Starter",
+    cta: "Talk about Core",
     featured: false
   },
   {
-    name: "Professional",
+    name: "Pro",
     label: "for growing clinics and service businesses",
-    setup: "£1,997 setup",
-    price: "£597",
-    period: "/month",
-    included: "800 AI minutes included",
-    subline: "For UK clinics and service businesses that need deeper integration and higher volume.",
-    bullets: [
-      "Everything in Starter",
-      "24/7 call handling for higher volume",
-      "Integration with one supported CRM or booking system (e.g. HubSpot, GoHighLevel, Cliniko, Phorest, Fresha)",
-      "Automatic lead capture and CRM updates from every call",
-      "Call summaries by email/SMS after each conversation",
-      "Up to 25 FAQs and more advanced call flows",
-      "Priority email and WhatsApp support",
-      "Quarterly performance review",
-      "Overage minutes at £0.16/min"
-    ],
-    cta: "Talk about Professional",
-    featured: true
-  },
-  {
-    name: "Growth",
-    label: "inbound, lead capture + warm reactivation",
-    setup: "£3,497 setup",
-    price: "£1,197",
+    setup: "£997 one-off setup",
+    minTerm: "Minimum term: 6 months",
+    price: "£997",
     period: "/month",
     included: "1,500 AI minutes included",
-    subline: "For established UK service businesses with larger client lists and marketing spend.",
+    subline: "For businesses wanting to recover revenue from existing lists, not just protect inbound.",
     bullets: [
-      "Everything in Professional",
-      "Two agents: inbound receptionist + warm outbound reactivation",
-      "Up to 500 warm outbound calls/month to existing clients/no-shows/unconverted leads (no cold calling; consented contacts only)",
+      "Everything in Core",
+      "Warm outbound reactivation (up to 300 calls/month)",
+      "Two AI agents: Inbound + Outbound reactivation",
+      "Up to two CRM/booking system integrations",
       "Full CRM pipeline updates and outcome tagging",
-      "Weekly performance reports (calls, bookings, reactivations, estimated revenue impact)",
+      "Advanced call flows: multi-step triage, conditional routing",
+      "Up to 40 FAQs configured across inbound and outbound",
+      "Weekly performance reports",
       "Dedicated WhatsApp support line",
-      "One in-depth optimisation sprint each quarter",
-      "Overage minutes at £0.14/min"
+      "Monthly optimisation sprint",
+      "Overage minutes at £0.14/min",
+      "Heavier campaigns can be quoted separately"
     ],
-    cta: "Talk about Growth",
-    featured: false
+    cta: "Talk about Pro",
+    featured: true
   }
 ];
 
@@ -90,7 +77,7 @@ export const Pricing = () => {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
           {plans.map((plan, index) => (
             <motion.div
               key={index}
@@ -118,6 +105,7 @@ export const Pricing = () => {
                   </div>
                   <div className="flex flex-col gap-1 text-sm">
                     <span className="text-foreground font-medium">{plan.setup}</span>
+                    <span className="text-muted-foreground font-medium">{plan.minTerm}</span>
                     <span className="text-primary font-medium">{plan.included}</span>
                   </div>
                 </div>
