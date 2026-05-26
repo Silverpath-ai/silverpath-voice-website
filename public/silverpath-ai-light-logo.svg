@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 210 32" width="210" height="32" fill="none">
+  <!-- Brand Symbol (S-shape) -->
+  <g id="symbol">
+    <!-- Bar 1 (top): wide charcoal -->
+    <rect x="2" y="2.5" width="28" height="3.2" rx="1.6" fill="#121826" />
+    <!-- Bar 2: short charcoal, shifted left -->
+    <rect x="2" y="8.5" width="16" height="3.2" rx="1.6" fill="#121826" />
+    <!-- Bar 3 (center): medium vibrant cyan -->
+    <rect x="6" y="14.5" width="20" height="3.2" rx="1.6" fill="#00cbd6" />
+    <!-- Bar 4: short charcoal, shifted right -->
+    <rect x="14" y="20.5" width="16" height="3.2" rx="1.6" fill="#121826" />
+    <!-- Bar 5 (bottom): wide charcoal -->
+    <rect x="2" y="26.5" width="28" height="3.2" rx="1.6" fill="#121826" />
+  </g>
+
+  <!-- Brand Typography -->
+  <text x="44" y="22.5" font-family="'Outfit', 'Inter', system-ui, -apple-system, sans-serif" font-weight="700" font-size="19" letter-spacing="1.2">
+    <tspan fill="#121826">SILVERPATH</tspan>
+    <tspan fill="#00cbd6" font-weight="800" font-size="20"> AI</tspan>
+  </text>
+</svg>
