@@ -10,9 +10,8 @@ const AI_MISSED_PERCENT = 3;
 const RECOVERY_FACTOR = 0.8;
 const WEEKS_PER_MONTH = 4.33;
 const PLAN_PRICES: Record<string, number> = {
-  starter: 297,
-  professional: 597,
-  growth: 1197,
+  core: 497,
+  pro: 997,
 };
 
 const BUSINESS_TYPES = [
@@ -177,7 +176,7 @@ export const ProblemROI = () => {
   const [missedPercent, setMissedPercent] = useState(20);
   const [conversionPercent, setConversionPercent] = useState(25);
   const [revenuePerBooking, setRevenuePerBooking] = useState(150);
-  const [plan, setPlan] = useState<string>("professional");
+  const [plan, setPlan] = useState<string>("core");
 
   // Advanced mode
   const [showAdvanced, setShowAdvanced] = useState(false);
@@ -217,12 +216,7 @@ export const ProblemROI = () => {
       ? (recoveredRevenuePerMonth + labourSavingsPerMonth) / planMonthlyCost
       : 0;
 
-  const planLabel =
-    plan === "starter"
-      ? "Starter"
-      : plan === "professional"
-        ? "Professional"
-        : "Growth";
+  const planLabel = plan === "core" ? "Core" : "Pro";
 
   const businessCopy = BUSINESS_COPY[businessType] || BUSINESS_COPY[""];
 
@@ -360,8 +354,8 @@ export const ProblemROI = () => {
                     <label className="text-sm font-semibold text-foreground block">
                       Which Silverpath AI plan are you considering?
                     </label>
-                    <div className="grid grid-cols-3 gap-2">
-                      {(["starter", "professional", "growth"] as const).map(
+                    <div className="grid grid-cols-2 gap-2">
+                      {(["core", "pro"] as const).map(
                         (p) => (
                           <button
                             key={p}
@@ -372,11 +366,7 @@ export const ProblemROI = () => {
                                 : "bg-white text-foreground border-black/10 hover:border-primary/30"
                             }`}
                           >
-                            {p === "starter"
-                              ? "Starter"
-                              : p === "professional"
-                                ? "Pro"
-                                : "Growth"}
+                            {p === "core" ? "Core" : "Pro"}
                             <span className="block text-[10px] mt-1 font-mono opacity-80">
                               £{PLAN_PRICES[p]}/mo
                             </span>
