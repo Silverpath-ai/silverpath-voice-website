@@ -3,10 +3,11 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  const { agentId } = req.body;
+  // Dynamically load the agent ID from server env variables with client fallback
+  const agentId = process.env.RETELL_AGENT_ID || req.body?.agentId;
 
   if (!agentId) {
-    return res.status(400).json({ error: 'agentId is required' });
+    return res.status(400).json({ error: 'agentId is required (missing from environment and request body)' });
   }
 
   const apiKey = process.env.RETELL_API_KEY;
