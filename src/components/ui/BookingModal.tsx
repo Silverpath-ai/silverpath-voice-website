@@ -80,11 +80,11 @@ export const BookingModal = () => {
           <div className="flex items-center justify-between p-6 border-b border-black/5 bg-slate-50/50">
             <div>
               <h2 className="text-xl md:text-2xl font-display font-bold text-foreground">
-                {step === 1 ? "Book Your Voice Audit" : "Pick a Time"}
+                {step === 1 ? "Find Out What Missed Calls Are Costing You" : "Pick a Time"}
               </h2>
               <p className="text-sm text-muted-foreground mt-1">
                 {step === 1 
-                  ? "Tell us a bit about your business before we speak."
+                  ? "Answer 4 quick questions so we can make the most of your 15 minutes."
                   : "Thanks — pick a time for your 15‑minute call below."}
               </p>
             </div>
@@ -141,9 +141,8 @@ export const BookingModal = () => {
                     />
                   </div>
                   <div className="space-y-2">
-                    <label className="text-sm font-semibold text-foreground">Phone *</label>
+                    <label className="text-sm font-semibold text-foreground">Phone</label>
                     <input 
-                      required
                       type="tel" 
                       name="phone"
                       value={formData.phone}
@@ -151,6 +150,9 @@ export const BookingModal = () => {
                       className="w-full px-4 py-3 rounded-xl border border-black/10 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all bg-white"
                       placeholder="07700 900000"
                     />
+                    <p className="text-xs text-muted-foreground mt-1">
+                      Optional — in case we need to reach you before the call
+                    </p>
                   </div>
                 </div>
 
@@ -164,25 +166,32 @@ export const BookingModal = () => {
                     className="w-full px-4 py-3 rounded-xl border border-black/10 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all bg-white text-foreground appearance-none"
                   >
                     <option value="" disabled>Select an option</option>
-                    <option value="Fewer than 100">Fewer than 100 calls per month</option>
-                    <option value="100 - 300">100 – 300 calls per month</option>
-                    <option value="301 - 600">301 – 600 calls per month</option>
-                    <option value="601 - 1000">601 – 1,000 calls per month</option>
-                    <option value="More than 1000">More than 1,000 calls per month</option>
-                    <option value="Not sure">Not sure / it varies a lot</option>
+                    <option value="Fewer than 50 calls per month">Fewer than 50 calls per month</option>
+                    <option value="50 to 100 calls per month">50 to 100 calls per month</option>
+                    <option value="100 to 200 calls per month">100 to 200 calls per month</option>
+                    <option value="200 to 300 calls per month">200 to 300 calls per month</option>
+                    <option value="More than 300 calls per month">More than 300 calls per month</option>
                   </select>
+                  <p className="text-xs text-muted-foreground mt-1">
+                    A rough estimate is fine — most service businesses receive 50 to 300 calls per month.
+                  </p>
                 </div>
 
                 <div className="space-y-2">
                   <label className="text-sm font-semibold text-foreground">Which best describes your business? (Optional)</label>
-                  <input 
-                    type="text" 
+                  <select 
                     name="businessType"
                     value={formData.businessType}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 rounded-xl border border-black/10 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all bg-white placeholder:text-muted-foreground/50"
-                    placeholder="Aesthetics / Clinic / Estate agent / Trades / etc."
-                  />
+                    className="w-full px-4 py-3 rounded-xl border border-black/10 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all bg-white text-foreground appearance-none"
+                  >
+                    <option value="">Select an option</option>
+                    <option value="Aesthetics or Wellness Clinic">Aesthetics or Wellness Clinic</option>
+                    <option value="Private Physio or Allied Health">Private Physio or Allied Health</option>
+                    <option value="Trades or Garage">Trades or Garage</option>
+                    <option value="Estate Agent or Property Manager">Estate Agent or Property Manager</option>
+                    <option value="Other">Other</option>
+                  </select>
                 </div>
 
                 <div className="pt-4">
@@ -201,7 +210,7 @@ export const BookingModal = () => {
                         Saving Details...
                       </>
                     ) : (
-                      "Continue to Calendar"
+                      "Book My Free Voice Audit →"
                     )}
                   </Button>
                   <p className="text-xs text-center text-muted-foreground mt-4">
