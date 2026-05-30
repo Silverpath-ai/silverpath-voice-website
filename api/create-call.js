@@ -26,6 +26,7 @@ export default async function handler(req, res) {
       },
       body: JSON.stringify({
         agent_id: agentId,
+        max_call_duration_ms: 360000,
       }),
     });
 

@@ -13,6 +13,58 @@ export const LiveDemo = () => {
   const [isMuted, setIsMuted] = useState(false);
   const [callSeconds, setCallSeconds] = useState(0);
 
+  // Lead Gen Gate State
+  const [gatePassed, setGatePassed] = useState(false);
+  const [isSubmittingGate, setIsSubmittingGate] = useState(false);
+  const [gateFormData, setGateFormData] = useState({
+    name: "",
+    email: "",
+    businessType: ""
+  });
+
+  // Check if visitor has already unlocked the demo
+  useEffect(() => {
+    const passed = localStorage.getItem("silvia_gate_passed") === "true";
+    setGatePassed(passed);
+  }, []);
+
+  const handleGateInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+    setGateFormData({
+      ...gateFormData,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const handleGateSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmittingGate(true);
+    try {
+      const response = await fetch("/api/capture-lead", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: gateFormData.name,
+          email: gateFormData.email,
+          businessType: gateFormData.businessType
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to capture lead details");
+      }
+
+      localStorage.setItem("silvia_gate_passed", "true");
+      setGatePassed(true);
+    } catch (error) {
+      console.error("Error capturing lead:", error);
+      alert("Failed to unlock demo. Please check your connection and try again.");
+    } finally {
+      setIsSubmittingGate(false);
+    }
+  };
+
   useEffect(() => {
     retellWebClient.on("call_started", () => {
       setCallStatus("active");
@@ -154,14 +206,77 @@ export const LiveDemo = () => {
                   <div className="mb-6">
                     <p className="text-sm font-semibold text-muted-foreground uppercase tracking-widest mb-4">Option 2: Speak in Browser</p>
                     
-                    <Button 
-                      size="lg" 
-                      onClick={toggleCall}
-                      className="w-full rounded-full text-base shadow-md group bg-primary hover:bg-primary/90 text-white"
-                    >
-                      <PhoneCall className="w-5 h-5 mr-2 animate-pulse" />
-                      Tap to speak in browser
-                    </Button>
+                    {!gatePassed ? (
+                      <form onSubmit={handleGateSubmit} className="space-y-4 text-left bg-slate-50/50 p-5 rounded-2xl border border-black/5">
+                        <div className="space-y-1.5">
+                          <label className="text-xs font-semibold text-foreground">Name</label>
+                          <input 
+                            required
+                            type="text" 
+                            name="name"
+                            value={gateFormData.name}
+                            onChange={handleGateInputChange}
+                            placeholder="John Doe"
+                            className="w-full px-4 py-2.5 rounded-xl border border-black/10 focus:border-primary focus:ring-1 focus:ring-primary outline-none text-sm transition-all bg-white text-foreground"
+                          />
+                        </div>
+                        <div className="space-y-1.5">
+                          <label className="text-xs font-semibold text-foreground">Email</label>
+                          <input 
+                            required
+                            type="email" 
+                            name="email"
+                            value={gateFormData.email}
+                            onChange={handleGateInputChange}
+                            placeholder="john@example.com"
+                            className="w-full px-4 py-2.5 rounded-xl border border-black/10 focus:border-primary focus:ring-1 focus:ring-primary outline-none text-sm transition-all bg-white text-foreground"
+                          />
+                        </div>
+                        <div className="space-y-1.5">
+                          <label className="text-xs font-semibold text-foreground">Business Type</label>
+                          <select 
+                            required
+                            name="businessType"
+                            value={gateFormData.businessType}
+                            onChange={handleGateInputChange}
+                            className="w-full px-4 py-2.5 rounded-xl border border-black/10 focus:border-primary focus:ring-1 focus:ring-primary outline-none text-sm transition-all bg-white text-foreground appearance-none"
+                          >
+                            <option value="" disabled>Select your business type</option>
+                            <option value="Aesthetics / Wellness Clinic">Aesthetics / Wellness Clinic</option>
+                            <option value="Physiotherapy / Allied Health">Physiotherapy / Allied Health</option>
+                            <option value="Estate Agent">Estate Agent</option>
+                            <option value="Trades / Garage">Trades / Garage</option>
+                            <option value="Other">Other</option>
+                          </select>
+                        </div>
+                        <div className="pt-2">
+                          <Button 
+                            type="submit" 
+                            size="lg" 
+                            disabled={isSubmittingGate}
+                            className="w-full rounded-xl text-base h-12 relative shadow-sm"
+                          >
+                            {isSubmittingGate ? (
+                              <>
+                                <Loader2 className="w-5 h-5 animate-spin mr-2" />
+                                Unlocking...
+                              </>
+                            ) : (
+                              "Unlock Browser Demo →"
+                            )}
+                          </Button>
+                        </div>
+                      </form>
+                    ) : (
+                      <Button 
+                        size="lg" 
+                        onClick={toggleCall}
+                        className="w-full rounded-full text-base shadow-md group bg-primary hover:bg-primary/90 text-white"
+                      >
+                        <PhoneCall className="w-5 h-5 mr-2 animate-pulse" />
+                        Tap to speak in browser
+                      </Button>
+                    )}
                   </div>
 
                   <p className="text-xs text-muted-foreground px-4 border-t border-black/5 pt-6 mt-2">
