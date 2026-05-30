@@ -14,12 +14,14 @@ import { FAQ } from "@/components/home/FAQ";
 import { FinalCTA } from "@/components/home/FinalCTA";
 import { BookingProvider } from "@/context/BookingContext";
 import { BookingModal } from "@/components/ui/BookingModal";
+import { ScrollToTop } from "@/components/ui/ScrollToTop";
 
 function App() {
   return (
     <BookingProvider>
       <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
         <BookingModal />
+        <ScrollToTop />
         <Navbar />
       <main>
         <Hero />
