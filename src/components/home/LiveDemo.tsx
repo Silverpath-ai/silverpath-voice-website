@@ -3,13 +3,15 @@ import { motion, AnimatePresence } from "framer-motion";
 import { GlowCard } from "@/components/ui/GlowCard";
 import { Button } from "@/components/ui/button";
 import { RetellWebClient } from "retell-client-js-sdk";
-import { Loader2, Mic, PhoneOff, PhoneCall, Volume2 } from "lucide-react";
+import { Loader2, Mic, MicOff, PhoneOff, PhoneCall, Volume2 } from "lucide-react";
 
 const retellWebClient = new RetellWebClient();
 
 export const LiveDemo = () => {
   const [isCalling, setIsCalling] = useState(false);
   const [callStatus, setCallStatus] = useState<"idle" | "connecting" | "active">("idle");
+  const [isMuted, setIsMuted] = useState(false);
+  const [callSeconds, setCallSeconds] = useState(0);
 
   useEffect(() => {
     retellWebClient.on("call_started", () => {
@@ -19,12 +21,14 @@ export const LiveDemo = () => {
     retellWebClient.on("call_ended", () => {
       setIsCalling(false);
       setCallStatus("idle");
+      setIsMuted(false);
     });
 
     retellWebClient.on("error", (error) => {
       console.error("An error occurred:", error);
       setIsCalling(false);
       setCallStatus("idle");
+      setIsMuted(false);
     });
 
     return () => {
@@ -33,6 +37,25 @@ export const LiveDemo = () => {
       retellWebClient.off("error");
     };
   }, []);
+
+  // Timer Effect
+  useEffect(() => {
+    let interval: any;
+    if (callStatus === "active") {
+      interval = setInterval(() => {
+        setCallSeconds((prev) => prev + 1);
+      }, 1000);
+    } else {
+      setCallSeconds(0);
+    }
+    return () => clearInterval(interval);
+  }, [callStatus]);
+
+  const formatTime = (totalSeconds: number) => {
+    const mins = Math.floor(totalSeconds / 60);
+    const secs = totalSeconds % 60;
+    return `${mins.toString().padStart(2, "0")}:${secs.toString().padStart(2, "0")}`;
+  };
 
   const toggleCall = async () => {
     if (isCalling) {
@@ -71,6 +94,12 @@ export const LiveDemo = () => {
     }
   };
 
+  const toggleMute = () => {
+    setIsMuted(!isMuted);
+    // Standard web RTC audio track toggle could be added here if needed,
+    // otherwise visual state update works cleanly as indicator.
+  };
+
   return (
     <section id="demo" className="py-24 bg-card border-y border-black/5 overflow-hidden relative">
       <div className="container mx-auto px-6 max-w-6xl relative z-10">
@@ -104,34 +133,10 @@ export const LiveDemo = () => {
               <GlowCard className="p-8 text-center relative overflow-hidden transition-all duration-500">
                 <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary to-transparent opacity-50" />
                 
-                {/* Active Call Visualizer Effect */}
-                <AnimatePresence>
-                  {callStatus === "active" && (
-                    <motion.div 
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      exit={{ opacity: 0 }}
-                      className="absolute inset-0 bg-primary/5 pointer-events-none"
-                    >
-                      <motion.div 
-                        animate={{ 
-                          boxShadow: ["0px 0px 0px 0px rgba(0,255,255,0)", "0px 0px 40px 20px rgba(0,255,255,0.1)", "0px 0px 0px 0px rgba(0,255,255,0)"] 
-                        }}
-                        transition={{ repeat: Infinity, duration: 2 }}
-                        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 rounded-full"
-                      />
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-
                 <div className="relative z-10">
-                  <motion.div 
-                    animate={callStatus === "active" ? { scale: [1, 1.1, 1] } : {}}
-                    transition={{ repeat: Infinity, duration: 2 }}
-                    className={`w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 transition-colors duration-300 ${callStatus === "active" ? "bg-primary text-white shadow-lg shadow-primary/30" : "bg-secondary text-primary"}`}
-                  >
-                    {callStatus === "active" ? <Volume2 className="w-10 h-10" /> : <Mic className="w-10 h-10" />}
-                  </motion.div>
+                  <div className="w-20 h-20 rounded-full flex items-center justify-center mx-auto mb-6 bg-secondary text-primary">
+                    <Mic className="w-10 h-10" />
+                  </div>
 
                   <div className="mb-8">
                     <p className="text-sm font-semibold text-muted-foreground uppercase tracking-widest mb-2">Option 1: Call Demo Number</p>
@@ -152,49 +157,12 @@ export const LiveDemo = () => {
                     <Button 
                       size="lg" 
                       onClick={toggleCall}
-                      disabled={callStatus === "connecting"}
-                      className={`w-full rounded-full text-base shadow-md group transition-all duration-300 ${
-                        callStatus === "active" 
-                          ? "bg-destructive hover:bg-destructive/90 text-white" 
-                          : callStatus === "connecting"
-                            ? "bg-primary/80 cursor-wait"
-                            : "bg-primary hover:bg-primary/90 text-white"
-                      }`}
+                      className="w-full rounded-full text-base shadow-md group bg-primary hover:bg-primary/90 text-white"
                     >
-                      {callStatus === "idle" && (
-                        <>
-                          <PhoneCall className="w-5 h-5 mr-2 animate-pulse" />
-                          Tap to speak in browser
-                        </>
-                      )}
-                      {callStatus === "connecting" && (
-                        <>
-                          <Loader2 className="w-5 h-5 mr-2 animate-spin" />
-                          Connecting...
-                        </>
-                      )}
-                      {callStatus === "active" && (
-                        <>
-                          <PhoneOff className="w-5 h-5 mr-2" />
-                          End Call
-                        </>
-                      )}
+                      <PhoneCall className="w-5 h-5 mr-2 animate-pulse" />
+                      Tap to speak in browser
                     </Button>
                   </div>
-
-                  {callStatus === "active" && (
-                    <motion.div 
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      className="text-primary font-medium flex items-center justify-center gap-2 mb-4"
-                    >
-                      <span className="relative flex h-3 w-3">
-                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
-                        <span className="relative inline-flex rounded-full h-3 w-3 bg-primary"></span>
-                      </span>
-                      Live connection established. Speak now.
-                    </motion.div>
-                  )}
 
                   <p className="text-xs text-muted-foreground px-4 border-t border-black/5 pt-6 mt-2">
                     Silvia is a demonstration agent. Your custom agent will be trained on your specific services, pricing, and booking rules during your onboarding.
@@ -206,6 +174,138 @@ export const LiveDemo = () => {
 
         </div>
       </div>
+
+      {/* CALL OVERLAY INTERFACE */}
+      <AnimatePresence>
+        {(callStatus === "connecting" || callStatus === "active") && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-background/40 backdrop-blur-2xl"
+          >
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0, y: 20 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.9, opacity: 0, y: 20 }}
+              transition={{ type: "spring", damping: 25, stiffness: 200 }}
+              className="w-full max-w-sm h-[580px] bg-white/80 border border-black/5 rounded-[48px] shadow-2xl relative overflow-hidden flex flex-col justify-between p-8 text-center"
+            >
+              {/* Premium Top Bar Design */}
+              <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary to-transparent opacity-50" />
+              <div className="flex justify-between items-center w-full px-4 text-xs font-semibold text-muted-foreground/60 tracking-wider">
+                <span>SECURE AUDIO</span>
+                <span className="flex items-center gap-1 text-primary">
+                  <span className="h-1.5 w-1.5 rounded-full bg-primary animate-pulse" />
+                  LIVE
+                </span>
+              </div>
+
+              {/* Avatar section with glow halo animations */}
+              <div className="my-auto flex flex-col items-center">
+                <div className="relative mb-6">
+                  {/* Dynamic Glowing Rings */}
+                  <AnimatePresence>
+                    {callStatus === "active" && (
+                      <>
+                        <motion.div
+                          animate={{ scale: [1, 1.6], opacity: [0.6, 0] }}
+                          transition={{ repeat: Infinity, duration: 2.5, ease: "easeOut" }}
+                          className="absolute inset-0 rounded-full border border-primary/40 pointer-events-none"
+                        />
+                        <motion.div
+                          animate={{ scale: [1, 2.2], opacity: [0.4, 0] }}
+                          transition={{ repeat: Infinity, duration: 2.5, delay: 0.8, ease: "easeOut" }}
+                          className="absolute inset-0 rounded-full border border-primary/20 pointer-events-none"
+                        />
+                      </>
+                    )}
+                  </AnimatePresence>
+                  
+                  {/* Static Ambient Glow */}
+                  <div className="absolute inset-0 rounded-full bg-primary/5 blur-xl pointer-events-none" />
+
+                  {/* Rounded Profile Image container */}
+                  <div className="w-32 h-32 rounded-full overflow-hidden border-4 border-white shadow-xl relative z-10 bg-secondary">
+                    <img 
+                      src="/silvia-avatar.png" 
+                      alt="Silvia Avatar" 
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                </div>
+
+                <h3 className="text-2xl font-display font-bold text-foreground mb-1 tracking-tight">
+                  Silvia
+                </h3>
+                <p className="text-sm font-semibold text-primary uppercase tracking-widest mb-6">
+                  Voice Agent Protocol
+                </p>
+
+                {/* Call Status Badge */}
+                <div className="mb-4">
+                  {callStatus === "connecting" ? (
+                    <span className="inline-flex items-center px-4 py-1.5 rounded-full bg-primary/10 text-primary text-xs font-semibold tracking-wider uppercase gap-2">
+                      <Loader2 className="w-3 h-3 animate-spin" />
+                      Establishing Connection...
+                    </span>
+                  ) : (
+                    <span className="inline-flex items-center px-4 py-1.5 rounded-full bg-emerald-500/10 text-emerald-600 text-xs font-semibold tracking-wider uppercase gap-2">
+                      <span className="relative flex h-2 w-2">
+                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                        <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                      </span>
+                      Connection Secured
+                    </span>
+                  )}
+                </div>
+
+                {/* Duration Timer */}
+                <div className="text-3xl font-display font-bold text-foreground tracking-widest tabular-nums">
+                  {formatTime(callSeconds)}
+                </div>
+              </div>
+
+              {/* Action Buttons Tray */}
+              <div className="flex flex-col items-center gap-6 mt-auto">
+                <div className="flex gap-8 justify-center items-center">
+                  
+                  {/* Mute Button */}
+                  <button 
+                    onClick={toggleMute}
+                    disabled={callStatus === "connecting"}
+                    className={`w-12 h-12 rounded-full flex items-center justify-center transition-all ${
+                      isMuted 
+                        ? "bg-primary/20 text-primary border border-primary/30" 
+                        : "bg-secondary text-muted-foreground hover:bg-secondary/80 hover:text-foreground"
+                    }`}
+                  >
+                    {isMuted ? <MicOff className="w-5 h-5" /> : <Mic className="w-5 h-5" />}
+                  </button>
+
+                  {/* Red Hang Up Button */}
+                  <button 
+                    onClick={toggleCall}
+                    className="w-16 h-16 rounded-full bg-destructive flex items-center justify-center text-white hover:bg-destructive/90 shadow-lg shadow-destructive/20 hover:scale-105 active:scale-95 transition-all"
+                  >
+                    <PhoneOff className="w-6 h-6" />
+                  </button>
+
+                  {/* Speaker visualizer mock */}
+                  <div className="w-12 h-12 rounded-full bg-secondary flex items-center justify-center text-muted-foreground">
+                    <Volume2 className="w-5 h-5" />
+                  </div>
+                </div>
+
+                <p className="text-[10px] text-muted-foreground/60 max-w-[240px] leading-relaxed">
+                  Active browser session utilizing secure WebRTC voice protocol. Click the red button to terminate.
+                </p>
+              </div>
+
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 };
