@@ -190,94 +190,99 @@ export const LiveDemo = () => {
                     <Mic className="w-10 h-10" />
                   </div>
 
-                  <div className="mb-8">
-                    <p className="text-sm font-semibold text-muted-foreground uppercase tracking-widest mb-2">Option 1: Call Demo Number</p>
-                    <div className="text-3xl md:text-4xl font-display font-bold text-foreground tracking-wider mb-2">
-                      0800 123 4567
-                    </div>
-                  </div>
+                  {!gatePassed ? (
+                    <form onSubmit={handleGateSubmit} className="space-y-4 text-left bg-slate-50/50 p-5 rounded-2xl border border-black/5">
+                      <div className="text-center mb-4 border-b border-black/5 pb-3">
+                        <p className="text-xs font-bold text-muted-foreground uppercase tracking-[0.15em] mb-1">Demo Verification</p>
+                        <p className="text-xs text-muted-foreground">Unlock both browser calls and direct dial-in numbers.</p>
+                      </div>
+                      <div className="space-y-1.5">
+                        <label className="text-xs font-semibold text-foreground">Name</label>
+                        <input 
+                          required
+                          type="text" 
+                          name="name"
+                          value={gateFormData.name}
+                          onChange={handleGateInputChange}
+                          placeholder="John Doe"
+                          className="w-full px-4 py-2.5 rounded-xl border border-black/10 focus:border-primary focus:ring-1 focus:ring-primary outline-none text-sm transition-all bg-white text-foreground"
+                        />
+                      </div>
+                      <div className="space-y-1.5">
+                        <label className="text-xs font-semibold text-foreground">Email</label>
+                        <input 
+                          required
+                          type="email" 
+                          name="email"
+                          value={gateFormData.email}
+                          onChange={handleGateInputChange}
+                          placeholder="john@example.com"
+                          className="w-full px-4 py-2.5 rounded-xl border border-black/10 focus:border-primary focus:ring-1 focus:ring-primary outline-none text-sm transition-all bg-white text-foreground"
+                        />
+                      </div>
+                      <div className="space-y-1.5">
+                        <label className="text-xs font-semibold text-foreground">Business Type</label>
+                        <select 
+                          required
+                          name="businessType"
+                          value={gateFormData.businessType}
+                          onChange={handleGateInputChange}
+                          className="w-full px-4 py-2.5 rounded-xl border border-black/10 focus:border-primary focus:ring-1 focus:ring-primary outline-none text-sm transition-all bg-white text-foreground appearance-none"
+                        >
+                          <option value="" disabled>Select your business type</option>
+                          <option value="Aesthetics / Wellness Clinic">Aesthetics / Wellness Clinic</option>
+                          <option value="Physiotherapy / Allied Health">Physiotherapy / Allied Health</option>
+                          <option value="Estate Agent">Estate Agent</option>
+                          <option value="Trades / Garage">Trades / Garage</option>
+                          <option value="Other">Other</option>
+                        </select>
+                      </div>
+                      <div className="pt-2">
+                        <Button 
+                          type="submit" 
+                          size="lg" 
+                          disabled={isSubmittingGate}
+                          className="w-full rounded-xl text-base h-12 relative shadow-sm"
+                        >
+                          {isSubmittingGate ? (
+                            <>
+                              <Loader2 className="w-5 h-5 animate-spin mr-2" />
+                              Unlocking...
+                            </>
+                          ) : (
+                            "Unlock Silvia Demo →"
+                          )}
+                        </Button>
+                      </div>
+                    </form>
+                  ) : (
+                    <>
+                      <div className="mb-8">
+                        <p className="text-sm font-semibold text-muted-foreground uppercase tracking-widest mb-2">Option 1: Call Demo Number</p>
+                        <div className="text-3xl md:text-4xl font-display font-bold text-foreground tracking-wider mb-2">
+                          0800 123 4567
+                        </div>
+                      </div>
 
-                  <div className="relative flex items-center py-4 mb-4">
-                    <div className="flex-grow border-t border-black/10"></div>
-                    <span className="flex-shrink-0 mx-4 text-sm text-muted-foreground font-medium uppercase tracking-widest">Or</span>
-                    <div className="flex-grow border-t border-black/10"></div>
-                  </div>
+                      <div className="relative flex items-center py-4 mb-4">
+                        <div className="flex-grow border-t border-black/10"></div>
+                        <span className="flex-shrink-0 mx-4 text-sm text-muted-foreground font-medium uppercase tracking-widest">Or</span>
+                        <div className="flex-grow border-t border-black/10"></div>
+                      </div>
 
-                  <div className="mb-6">
-                    <p className="text-sm font-semibold text-muted-foreground uppercase tracking-widest mb-4">Option 2: Speak in Browser</p>
-                    
-                    {!gatePassed ? (
-                      <form onSubmit={handleGateSubmit} className="space-y-4 text-left bg-slate-50/50 p-5 rounded-2xl border border-black/5">
-                        <div className="space-y-1.5">
-                          <label className="text-xs font-semibold text-foreground">Name</label>
-                          <input 
-                            required
-                            type="text" 
-                            name="name"
-                            value={gateFormData.name}
-                            onChange={handleGateInputChange}
-                            placeholder="John Doe"
-                            className="w-full px-4 py-2.5 rounded-xl border border-black/10 focus:border-primary focus:ring-1 focus:ring-primary outline-none text-sm transition-all bg-white text-foreground"
-                          />
-                        </div>
-                        <div className="space-y-1.5">
-                          <label className="text-xs font-semibold text-foreground">Email</label>
-                          <input 
-                            required
-                            type="email" 
-                            name="email"
-                            value={gateFormData.email}
-                            onChange={handleGateInputChange}
-                            placeholder="john@example.com"
-                            className="w-full px-4 py-2.5 rounded-xl border border-black/10 focus:border-primary focus:ring-1 focus:ring-primary outline-none text-sm transition-all bg-white text-foreground"
-                          />
-                        </div>
-                        <div className="space-y-1.5">
-                          <label className="text-xs font-semibold text-foreground">Business Type</label>
-                          <select 
-                            required
-                            name="businessType"
-                            value={gateFormData.businessType}
-                            onChange={handleGateInputChange}
-                            className="w-full px-4 py-2.5 rounded-xl border border-black/10 focus:border-primary focus:ring-1 focus:ring-primary outline-none text-sm transition-all bg-white text-foreground appearance-none"
-                          >
-                            <option value="" disabled>Select your business type</option>
-                            <option value="Aesthetics / Wellness Clinic">Aesthetics / Wellness Clinic</option>
-                            <option value="Physiotherapy / Allied Health">Physiotherapy / Allied Health</option>
-                            <option value="Estate Agent">Estate Agent</option>
-                            <option value="Trades / Garage">Trades / Garage</option>
-                            <option value="Other">Other</option>
-                          </select>
-                        </div>
-                        <div className="pt-2">
-                          <Button 
-                            type="submit" 
-                            size="lg" 
-                            disabled={isSubmittingGate}
-                            className="w-full rounded-xl text-base h-12 relative shadow-sm"
-                          >
-                            {isSubmittingGate ? (
-                              <>
-                                <Loader2 className="w-5 h-5 animate-spin mr-2" />
-                                Unlocking...
-                              </>
-                            ) : (
-                              "Unlock Browser Demo →"
-                            )}
-                          </Button>
-                        </div>
-                      </form>
-                    ) : (
-                      <Button 
-                        size="lg" 
-                        onClick={toggleCall}
-                        className="w-full rounded-full text-base shadow-md group bg-primary hover:bg-primary/90 text-white"
-                      >
-                        <PhoneCall className="w-5 h-5 mr-2 animate-pulse" />
-                        Tap to speak in browser
-                      </Button>
-                    )}
-                  </div>
+                      <div className="mb-6">
+                        <p className="text-sm font-semibold text-muted-foreground uppercase tracking-widest mb-4">Option 2: Speak in Browser</p>
+                        <Button 
+                          size="lg" 
+                          onClick={toggleCall}
+                          className="w-full rounded-full text-base shadow-md group bg-primary hover:bg-primary/90 text-white"
+                        >
+                          <PhoneCall className="w-5 h-5 mr-2 animate-pulse" />
+                          Tap to speak in browser
+                        </Button>
+                      </div>
+                    </>
+                  )}
 
                   <p className="text-xs text-muted-foreground px-4 border-t border-black/5 pt-6 mt-2">
                     Silvia is a demonstration agent. Your custom agent will be trained on your specific services, pricing, and booking rules during your onboarding.
