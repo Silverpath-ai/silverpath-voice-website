@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useEffect } from "react";
+import { createContext, useContext } from "react";
 import type { ReactNode } from "react";
 
 interface BookingContextType {
@@ -10,23 +10,9 @@ interface BookingContextType {
 const BookingContext = createContext<BookingContextType | undefined>(undefined);
 
 export const BookingProvider = ({ children }: { children: ReactNode }) => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      const params = new URLSearchParams(window.location.search);
-      const hash = window.location.hash;
-      
-      if (params.get("book") === "true" || params.get("apply") === "true" || hash === "#booking" || hash === "#book") {
-        setIsOpen(true);
-        // Clean up URL parameters/hash without a page reload to prevent re-triggering
-        window.history.replaceState({}, document.title, window.location.pathname);
-      }
-    }
-  }, []);
-
-  const openBooking = () => setIsOpen(true);
-  const closeBooking = () => setIsOpen(false);
+  const isOpen = false;
+  const openBooking = () => {};
+  const closeBooking = () => {};
 
   return (
     <BookingContext.Provider value={{ isOpen, openBooking, closeBooking }}>
@@ -35,6 +21,7 @@ export const BookingProvider = ({ children }: { children: ReactNode }) => {
   );
 };
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const useBooking = () => {
   const context = useContext(BookingContext);
   if (context === undefined) {
