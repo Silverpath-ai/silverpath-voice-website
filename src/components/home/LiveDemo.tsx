@@ -117,6 +117,7 @@ export const LiveDemo = () => {
     } else {
       setIsCalling(true);
       setCallStatus("connecting");
+      /*
       try {
         const response = await fetch("/api/create-call", {
           method: "POST",
@@ -143,6 +144,7 @@ export const LiveDemo = () => {
         setCallStatus("idle");
         alert("Failed to start the call. Please make sure the API key and Agent ID are configured.");
       }
+      */
     }
   };
 

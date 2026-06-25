@@ -19,9 +19,6 @@ export const Footer = () => {
               <p>Based in Glasgow, operating UK wide</p>
               <p>Company No: 16670495</p>
               <p>ICO Reg No: ZC099845</p>
-              <a href="mailto:growth@silverpath.ai" className="text-primary hover:underline mt-2 inline-block">
-                growth@silverpath.ai
-              </a>
             </div>
 
             {/* Badges */}
