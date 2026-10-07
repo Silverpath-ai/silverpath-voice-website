@@ -4,23 +4,23 @@ import { GlowCard } from "@/components/ui/GlowCard";
 const steps = [
   {
     number: "01",
-    title: "Tell us how you take jobs",
-    body: "In a 60–90 minute session, you tell us your services, areas covered, pricing ranges, emergency rules and booking rules. We turn this into your call flow using templates built for your trade."
+    title: "Start from a template built for your trade",
+    body: "Pick plumbing and heating, electrical or property maintenance. Your call flow arrives ready-made, with the right questions, urgency levels and booking steps."
   },
   {
     number: "02",
-    title: "Your agent is configured",
-    body: "We set up a natural, UK-voiced agent on your line, running on a low-latency voice stack so conversations feel fast and human."
+    title: "Add your rules",
+    body: "Enter your service areas, opening hours, emergency rules and FAQs in a short setup form. It takes about 30 minutes. [BUILD: setup form]"
   },
   {
     number: "03",
-    title: "Connect your calendar and systems",
-    body: "We connect your Google Calendar or Calendly. On Pro we also connect supported systems such as HubSpot or GoHighLevel, so calls become real bookings and records, not just messages."
+    title: "Connect your diary",
+    body: "Link Google Calendar or Calendly. On Pro, connect HubSpot or GoHighLevel too. Before it books anything, Silverpath checks your real availability."
   },
   {
     number: "04",
-    title: "Go live, 24/7",
-    body: "Within 2–3 weeks your agent is live. It catches overflow and after-hours calls, books jobs, logs leads and sends your team a clear summary after every call."
+    title: "Test it, then switch on",
+    body: "Call your agent and listen back, then adjust anything you don't like. When you're happy, forward your line. Every call is then answered, and every outcome shows up in your dashboard. [BUILD: dashboard]"
   }
 ];
 
@@ -41,7 +41,7 @@ export const HowItWorks = () => {
             How Silverpath Works
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            A simple setup to get your AI call agent live in weeks, not months.
+            Choose a template, add your rules, connect your diary and switch on. Most businesses are taking calls within a week. [CONFIRM]
           </p>
         </motion.div>
 
@@ -87,7 +87,7 @@ export const HowItWorks = () => {
           className="mt-16 text-center"
         >
           <div className="inline-block bg-secondary px-6 py-3 rounded-full text-sm font-medium text-foreground">
-            No new hardware. No scripts for you to write. You keep the calls and the revenue.
+            Stuck on any step? Onboarding support is included.
           </div>
         </motion.div>
       </div>
