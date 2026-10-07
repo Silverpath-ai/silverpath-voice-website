@@ -35,7 +35,7 @@ export const Hero = () => {
               className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-secondary text-secondary-foreground text-xs font-semibold uppercase tracking-widest mb-8"
             >
               <div className="w-1.5 h-1.5 rounded-full bg-primary" />
-              Built for UK clinics and service businesses
+              Built for UK trades and property maintenance businesses
             </motion.div>
 
             <motion.h1
@@ -44,9 +44,9 @@ export const Hero = () => {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-5xl md:text-6xl lg:text-7xl font-display font-bold leading-[1.1] text-foreground mb-6"
             >
-              Never miss a <br className="hidden md:block" />
+              Every call becomes a <br className="hidden md:block" />
               <span className="relative inline-block">
-                <span className="relative z-10 text-primary">call again.</span>
+                <span className="relative z-10 text-primary">booked job.</span>
                 <span className="absolute bottom-2 left-0 w-full h-3 bg-cyan-100/50 -z-10 -rotate-2" />
               </span>
             </motion.h1>
@@ -57,7 +57,7 @@ export const Hero = () => {
               transition={{ duration: 0.6, delay: 0.3 }}
               className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto lg:mx-0 mb-10"
             >
-              Silverpath AI gives your business a professional receptionist that answers every call, handles enquiries, and books appointments — 24 hours a day, 7 days a week. You keep doing what you do best.
+              Silverpath answers your calls, takes the details, checks your diary and books the work. Day or night, including when you're up a ladder.
             </motion.p>
 
             <motion.div
@@ -67,7 +67,7 @@ export const Hero = () => {
               className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4"
             >
               <Button size="lg" className="w-full sm:w-auto text-base rounded-full px-8 shadow-lg hover:shadow-xl transition-shadow group" onClick={openBooking}>
-                Book a 15-minute call
+                Book a free discovery call
               </Button>
               <Button 
                 size="lg" 
@@ -76,7 +76,7 @@ export const Hero = () => {
                 onClick={() => document.getElementById('demo')?.scrollIntoView({ behavior: 'smooth' })}
               >
                 <Play className="w-4 h-4 mr-2 group-hover:text-primary transition-colors" />
-                Listen to a live demo
+                Hear it take a call
               </Button>
             </motion.div>
           </div>
@@ -123,8 +123,8 @@ export const Hero = () => {
                 <div className="w-full bg-white/50 backdrop-blur-sm rounded-xl p-4 border border-black/5">
                   <p className="text-sm font-medium text-foreground mb-1 text-left">Agent Analysis</p>
                   <p className="text-xs text-muted-foreground font-mono text-left opacity-70">
-                    Intent: New Patient Booking<br/>
-                    Status: Checking Calendar Availability...
+                    Intent: Emergency Boiler Repair<br/>
+                    Status: Checking engineer availability...
                   </p>
                 </div>
               </div>
@@ -142,7 +142,7 @@ export const Hero = () => {
                 </svg>
               </div>
               <div>
-                <p className="text-xs font-bold text-foreground">Appointment Booked</p>
+                <p className="text-xs font-bold text-foreground">Job Booked</p>
                 <p className="text-[10px] text-muted-foreground">Just now</p>
               </div>
             </motion.div>

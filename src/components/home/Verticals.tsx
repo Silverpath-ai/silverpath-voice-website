@@ -3,20 +3,16 @@ import { GlowCard } from "@/components/ui/GlowCard";
 
 const verticals = [
   {
-    title: "Aesthetics & wellness clinics",
-    body: "Stop losing high-value treatment bookings when you're in session. We answer new patient enquiries, pre-screen them, and book consultations into your calendar or tools like Cliniko and Phorest."
+    title: "Plumbing, heating and gas engineers",
+    body: "Never lose a call-out because you were on a job. Your agent takes the details, flags emergencies and books the visit. Urgent calls are passed to your team straight away."
   },
   {
-    title: "Private physio & allied health",
-    body: "Keep diaries full while you stay hands-on with patients. Your AI receptionist handles new patient calls, simple triage and bookings, and sends clear summaries to your team."
+    title: "Electricians and multi-trade firms",
+    body: "Capture quote requests and job details while you work. You get a summary by email or WhatsApp, with the job ready to schedule."
   },
   {
-    title: "Estate agents & property managers",
-    body: "Capture portal and phone enquiries around the clock. Turn missed calls into valuation visits and viewings — even on evenings and weekends when buyers are browsing listings."
-  },
-  {
-    title: "Trades & garages",
-    body: "Let an AI receptionist take bookings and quote requests while you're on site or in the workshop. You get WhatsApp and email summaries with jobs ready to schedule."
+    title: "Property maintenance and lettings",
+    body: "Take tenant and landlord repair calls around the clock. Log the issue, classify urgency and send it to the right person."
   }
 ];
 
@@ -36,10 +32,10 @@ export const Verticals = () => {
             Who we're best for
           </p>
           <h2 className="text-3xl md:text-5xl font-display font-bold text-foreground mb-4">
-            The systems adapt. The methodology doesn't.
+            Built for businesses that win work by phone.
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            CallCapture 24/7 is designed for call-driven UK service businesses where every missed call hurts. Right now, we're focused on:
+            Silverpath is built first for UK trades and property maintenance firms, where every missed call is a lost job.
           </p>
         </motion.div>
 
@@ -72,6 +68,21 @@ export const Verticals = () => {
             </motion.div>
           ))}
         </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="mt-16 text-center max-w-3xl mx-auto space-y-4"
+        >
+          <p className="text-base text-foreground font-medium">
+            Also works for: clinics, physio and allied health, estate agents and garages.
+          </p>
+          <p className="text-xs text-muted-foreground">
+            Silverpath doesn't give technical or safety advice. For emergencies, your agent follows instructions you approve, such as directing gas emergencies to the National Gas Emergency Service on 0800 111 999.
+          </p>
+        </motion.div>
 
       </div>
     </section>

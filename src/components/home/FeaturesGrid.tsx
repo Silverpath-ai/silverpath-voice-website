@@ -4,33 +4,33 @@ import { GlowCard } from "@/components/ui/GlowCard";
 
 const features = [
   {
-    title: "Instant Response",
-    description: "The Voice Agent initiates or answers a call within 2 seconds of the trigger.",
+    title: "Instant response",
+    description: "Your agent answers or places a call within 2 seconds of the trigger. [CONFIRM]",
     icon: Zap,
   },
   {
-    title: "Smart Lead Qualification",
-    description: "Uses your specific rules to identify and categorize high-intent prospects.",
+    title: "Smart job qualification",
+    description: "Uses your rules, such as job type, postcode and urgency, to tell emergencies from routine work.",
     icon: CheckCircle,
   },
   {
-    title: "Automated Booking",
-    description: "Books qualified leads directly onto your live calendar without human intervention.",
+    title: "Automated booking",
+    description: "Books jobs and call-outs straight onto your live calendar, with no human involved.",
     icon: Calendar,
   },
   {
-    title: "Follow-Up & Nurturing",
-    description: "Sends tailored follow-ups via SMS or email immediately after the call.",
+    title: "Follow-up that sticks",
+    description: "Sends a tailored SMS or email straight after the call.",
     icon: Clock,
   },
   {
-    title: "CRM Integration",
-    description: "Integrates natively with tools like Cliniko, HubSpot, and GoHighLevel.",
+    title: "Connects to your tools",
+    description: "Works with Google Calendar, Calendly, HubSpot and GoHighLevel. Supported job-management tools are available on Pro. [CONFIRM which job tools are actually supported]",
     icon: Users,
   },
   {
-    title: "24/7 Lead Coverage",
-    description: "Provides round-the-clock lead coverage—even on weekends and holidays.",
+    title: "Urgent calls handled",
+    description: "Emergencies are flagged and passed to your team straight away, any time of day.",
     icon: Star,
   }
 ];
@@ -56,7 +56,7 @@ export const FeaturesGrid = () => {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="text-lg text-muted-foreground max-w-2xl mx-auto"
           >
-            Built from the ground up to capture leads, answer questions, and drive revenue.
+            Built to capture jobs, answer questions and protect revenue.
           </motion.p>
         </div>
 

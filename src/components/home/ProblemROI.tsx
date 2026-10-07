@@ -238,19 +238,13 @@ export const ProblemROI = () => {
 
               <div className="space-y-6 text-lg text-muted-foreground leading-relaxed">
                 <p>
-                  For most UK service businesses, the phone still drives the
-                  best leads — but those calls often land when you're in
-                  treatment, on site, or already speaking to someone.
+                  For most trade and maintenance businesses, the phone is still where the best work comes from. But the calls land when you're under a sink, on a roof or driving between jobs.
                 </p>
                 <p>
-                  When the line is busy or the call goes to voicemail, most
-                  people don't leave a message or call back. They tap the next
-                  result on Google and book with a competitor instead.
+                  When the line is busy or goes to voicemail, most people don't leave a message. They tap the next result on Google and book someone else.
                 </p>
                 <p className="font-semibold text-foreground">
-                  Across clinics, trades and local services, that can easily add
-                  up to thousands of pounds a month in missed work and wasted
-                  marketing spend.
+                  Across trades, property maintenance and local services, that can easily add up to thousands of pounds a month in missed work and wasted marketing spend.
                 </p>
               </div>
 
@@ -329,7 +323,7 @@ export const ProblemROI = () => {
 
                   <SliderField
                     label="% of answered calls that convert"
-                    helper="For many clinics and trades, 20–40% of answered calls lead to paid work."
+                    helper="For many trades, 20–40% of answered calls lead to paid work."
                     value={conversionPercent}
                     onChange={setConversionPercent}
                     min={5}
@@ -339,8 +333,8 @@ export const ProblemROI = () => {
                   />
 
                   <SliderField
-                    label="Average value per new client / booking"
-                    helper="First treatment value, average job value, or typical first-month spend."
+                    label="Your average job value"
+                    helper=""
                     value={revenuePerBooking}
                     onChange={setRevenuePerBooking}
                     min={20}

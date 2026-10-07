@@ -5,52 +5,52 @@ import { Button } from "@/components/ui/button";
 const plans = [
   {
     name: "Core",
-    label: "for call-driven UK service businesses",
+    label: "For call-driven UK trades and service businesses",
     setup: "£597 one-off setup",
-    minTerm: "Minimum term: 3 months",
+    minTerm: "3-month minimum",
     price: "£497",
     period: "/month",
     included: "600 AI minutes included",
     subline: "For clinics, aesthetics, physio, estate agents, trades, and local services.",
     bullets: [
-      "24/7 inbound call handling for main line (overflow/after-hours)",
-      "One inbound AI receptionist (\"Silvia\")",
+      "24/7 inbound call handling for your main line (overflow and after-hours)",
+      "One inbound AI agent, using your business name",
       "Booking into Google Calendar, Calendly, Cliniko or Phorest",
       "Integration with one supported CRM or booking system",
-      "Automatic lead capture and CRM updates from every call",
-      "Call summaries by email after each conversation",
+      "Automatic lead capture and updates from every call",
+      "Call summaries by email",
       "Up to 20 FAQs configured",
-      "One UK number provided or call-forwarding",
-      "Two rounds of script revisions before launch",
+      "One UK number provided, or call forwarding",
+      "Two rounds of call-flow revisions before launch",
       "30-day optimisation check-in",
-      "Email support & monthly performance summary",
-      "Overage minutes at £0.17/min"
+      "Email support and a monthly outcomes report",
+      "Extra minutes at £0.35/min"
     ],
     cta: "Talk about Core",
     featured: false
   },
   {
     name: "Pro",
-    label: "for growing clinics and service businesses",
+    label: "For growing trades and multi-site businesses",
     setup: "£997 one-off setup",
-    minTerm: "Minimum term: 6 months",
+    minTerm: "6-month minimum",
     price: "£997",
     period: "/month",
     included: "1,500 AI minutes included",
     subline: "For businesses wanting to recover revenue from existing lists, not just protect inbound.",
     bullets: [
       "Everything in Core",
-      "Warm outbound reactivation (up to 300 calls/month)",
-      "Two AI agents: Inbound + Outbound reactivation",
-      "Up to two CRM/booking system integrations",
-      "Full CRM pipeline updates and outcome tagging",
-      "Advanced call flows: multi-step triage, conditional routing",
-      "Up to 40 FAQs configured across inbound and outbound",
+      "Consent-based follow-up calls (up to 300 a month), such as quote follow-ups and service reminders",
+      "Inbound agent plus a follow-up agent",
+      "Up to two CRM or booking integrations",
+      "Full pipeline updates and outcome tagging",
+      "Advanced flows: multi-step urgency triage, conditional routing",
+      "Up to 40 FAQs",
       "Weekly performance reports",
-      "Dedicated WhatsApp support line",
-      "Monthly optimisation sprint",
-      "Overage minutes at £0.14/min",
-      "Heavier campaigns can be quoted separately"
+      "Priority support",
+      "Monthly review of call outcomes and call flow",
+      "Extra minutes at £0.30/min",
+      "Heavier campaigns quoted separately"
     ],
     cta: "Talk about Pro",
     featured: true
@@ -73,7 +73,7 @@ export const Pricing = () => {
             Choose a plan that fits your call volume
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
-            Every plan includes done-for-you setup, UK-specific call flows and 24/7 AI call handling powered by Retell AI. You can move up or down a plan as your call volume changes.
+            Every plan includes guided setup, UK call flows and 24/7 AI call handling, powered by Retell AI. You can move up or down as your call volume changes. Prices exclude VAT.
           </p>
         </motion.div>
 
@@ -140,6 +140,18 @@ export const Pricing = () => {
             </motion.div>
           ))}
         </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="mt-8 text-center"
+        >
+          <p className="text-xs text-muted-foreground">
+            * Minutes are measured to the second. Usage alerts at 70%, 90% and 100% of your allowance [BUILD]. Unused minutes don't roll over.
+          </p>
+        </motion.div>
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}

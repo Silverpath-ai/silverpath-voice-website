@@ -10,7 +10,7 @@ const complianceItems = [
   {
     icon: Lock,
     title: "UK GDPR & PECR",
-    subtitle: "Built for strict compliance"
+    subtitle: "Designed for UK compliance"
   },
   {
     icon: Server,
@@ -19,13 +19,13 @@ const complianceItems = [
   },
   {
     icon: FileBadge,
-    title: "SOC Type I & II",
-    subtitle: "Enterprise-grade voice platform"
+    title: "SOC 2 voice platform",
+    subtitle: "Built on a SOC 2 compliant voice platform"
   },
   {
     icon: EyeOff,
-    title: "PII Redaction",
-    subtitle: "Configurable data storage"
+    title: "Configurable data retention",
+    subtitle: "Choose what is stored and for how long"
   }
 ];
 
@@ -44,7 +44,7 @@ export const ComplianceBanner = () => {
           className="text-center mb-10"
         >
           <h3 className="text-sm font-bold text-slate-400 uppercase tracking-[0.25em]">
-            Enterprise-Grade Security & Compliance
+            Built with compliance in mind
           </h3>
         </motion.div>
 

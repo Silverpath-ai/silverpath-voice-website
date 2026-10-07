@@ -16,17 +16,17 @@ export const FinalCTA = () => {
           transition={{ duration: 0.6 }}
         >
           <h2 className="text-4xl md:text-6xl font-display font-bold text-background mb-6 leading-tight">
-            Your next client is calling. <br className="hidden md:block" />
+            Your next job is calling. <br className="hidden md:block" />
             <span className="text-primary">Will you be ready?</span>
           </h2>
           
           <p className="text-xl text-muted-foreground mb-10 max-w-2xl mx-auto">
-            Ready to stop losing money to voicemail? Book a free 15-minute discovery call and we'll show you how many calls and bookings Silverpath AI could recover for your business each month.
+            Ready to stop losing work to voicemail? Book a free 15-minute discovery call and we'll show you how many calls and bookings Silverpath could recover for your business each month.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Button size="lg" className="w-full sm:w-auto rounded-full text-base h-14 px-8 shadow-xl shadow-primary/20" onClick={openBooking}>
-              Book a 15‑minute call
+              Book a free discovery call
             </Button>
             <Button 
               size="lg" 

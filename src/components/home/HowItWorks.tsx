@@ -4,23 +4,23 @@ import { GlowCard } from "@/components/ui/GlowCard";
 const steps = [
   {
     number: "01",
-    title: "We map your ideal call flow",
-    body: "We start with a 60–90 minute session to understand your services, pricing ranges, booking rules and FAQs. Together we design how your AI receptionist should greet callers, what questions to ask, and when to hand over to a human."
+    title: "Tell us how you take jobs",
+    body: "In a 60–90 minute session, you tell us your services, areas covered, pricing ranges, emergency rules and booking rules. We turn this into your call flow using templates built for your trade."
   },
   {
     number: "02",
-    title: "We set up your AI receptionist",
-    body: "We configure a natural‑sounding UK‑voiced agent on your line, powered with low‑latency voice stack, so conversations feel fast and human, not robotic."
+    title: "Your agent is configured",
+    body: "We set up a natural, UK-voiced agent on your line, running on a low-latency voice stack so conversations feel fast and human."
   },
   {
     number: "03",
-    title: "We connect your calendar and systems",
-    body: "We plug the agent into your Google Calendar or Calendly, and for Professional and Growth clients we connect supported systems like Cliniko, Phorest, HubSpot or GoHighLevel so calls become real bookings and leads, not just messages."
+    title: "Connect your calendar and systems",
+    body: "We connect your Google Calendar or Calendly. On Pro we also connect supported systems such as HubSpot or GoHighLevel, so calls become real bookings and records, not just messages."
   },
   {
     number: "04",
-    title: "You start answering every call, 24/7",
-    body: "Within 2–3 weeks, your AI receptionist is live — catching overflow and after‑hours calls, booking appointments, logging leads in your CRM, and sending your team clear summaries after each conversation."
+    title: "Go live, 24/7",
+    body: "Within 2–3 weeks your agent is live. It catches overflow and after-hours calls, books jobs, logs leads and sends your team a clear summary after every call."
   }
 ];
 
@@ -38,10 +38,10 @@ export const HowItWorks = () => {
           className="text-center mb-16"
         >
           <h2 className="text-3xl md:text-5xl font-display font-bold text-foreground mb-4">
-            How Silverpath AI Voice Works
+            How Silverpath Works
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            A frictionless deployment process designed to get your AI receptionist live in weeks, not months.
+            A simple setup to get your AI call agent live in weeks, not months.
           </p>
         </motion.div>
 
@@ -87,7 +87,7 @@ export const HowItWorks = () => {
           className="mt-16 text-center"
         >
           <div className="inline-block bg-secondary px-6 py-3 rounded-full text-sm font-medium text-foreground">
-            No new hardware. No scripts for you to write. We do the heavy lifting; you keep the calls and revenue.
+            No new hardware. No scripts for you to write. You keep the calls and the revenue.
           </div>
         </motion.div>
       </div>

@@ -288,6 +288,7 @@ export const LiveDemo = () => {
 
                   <p className="text-xs text-muted-foreground px-4 border-t border-black/5 pt-6 mt-2">
                     Silvia is a demonstration agent. Your custom agent will be trained on your specific services, pricing, and booking rules during your onboarding.
+                    <br className="mt-1"/>Your agent uses your business name, your services and your rules.
                   </p>
                 </div>
               </GlowCard>

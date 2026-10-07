@@ -9,32 +9,40 @@ import { GlowCard } from "@/components/ui/GlowCard";
 
 const faqs = [
   {
-    question: "How quickly can we go live?",
-    answer: "Most clients go live within 2–3 weeks. That includes mapping your call flows, setting up your AI receptionist, connecting calendars/systems and running a short test period."
+    question: "What counts as a minute?",
+    answer: "Only time your agent spends on a call. Usage is measured to the second, not rounded up per call."
   },
   {
-    question: "Will this replace my reception team?",
-    answer: "For many businesses, Silverpath AI complements humans rather than replacing them. The AI catches overflow and after-hours calls and handles simple bookings and FAQs; your team focuses on in-person service and complex cases."
+    question: "What happens if I go over my minutes?",
+    answer: "Extra minutes are billed monthly at your plan's overage rate. We can alert you as you approach your allowance. [BUILD]"
   },
   {
-    question: "Does it work with my booking system/CRM?",
-    answer: "Starter connects to Google Calendar/Calendly. Professional and Growth include one supported integration (e.g. Cliniko, Phorest, HubSpot, GoHighLevel); we can discuss others on a call."
+    question: "Will callers know they're talking to AI?",
+    answer: "Yes. Your agent introduces itself as an automated assistant, and callers can ask for a person at any time."
   },
   {
-    question: "What if the AI doesn't understand someone?",
-    answer: "If the AI gets stuck or detects frustration, it can apologise, gather basic details and hand over a message. We review early calls with you and tune the agent to your callers."
+    question: "What about emergencies?",
+    answer: "You decide which calls count as urgent. They are flagged and sent to your team by call transfer, SMS or both, using rules you approve."
   },
   {
-    question: "What about UK accents?",
-    answer: "Retell AI is built for natural conversational speech and performs well with a wide range of UK accents. We test with your team to catch any edge cases."
+    question: "What if the agent can't help?",
+    answer: "It takes a message, or hands the caller to your team, depending on your rules."
   },
   {
-    question: "Where is call data stored, and is it GDPR-compliant?",
-    answer: "Calls are processed via encrypted infrastructure and can be configured with PII redaction and limited retention. We'll walk you through how we handle call recordings and transcripts and help you update your privacy notice so you stay firmly inside UK GDPR expectations."
+    question: "Do I need a new phone number?",
+    answer: "No. You can forward your existing line, or use a UK number we provide."
   },
   {
-    question: "Can we stop if it isn't a fit?",
-    answer: "We start with a minimum term (3 or 6 months depending on plan). If after the initial period you're not seeing clear value, you can cancel with 30 days' notice."
+    question: "What happens to call data?",
+    answer: "You choose what is stored and for how long. Recording and transcript retention are configurable, and personal data can be redacted. [CONFIRM your data processing agreement is ready to offer]"
+  },
+  {
+    question: "Is there a contract?",
+    answer: "Core has a 3-month minimum and Pro has a 6-month minimum. After that, you can move up, down or cancel with notice. [CONFIRM notice period]"
+  },
+  {
+    question: "Which systems does it connect to?",
+    answer: "Google Calendar, Calendly, HubSpot and GoHighLevel, plus supported booking and job tools. [CONFIRM exact list]"
   }
 ];
 
@@ -97,7 +105,7 @@ export const FAQ = () => {
                 </svg>
               </div>
               <h4 className="font-bold text-foreground mb-2">Built on proven voice AI</h4>
-              <p className="text-sm text-muted-foreground">Powered by an enterprise-grade voice platform used to run thousands of phone agents worldwide. Low-latency, natural UK voices.</p>
+              <p className="text-sm text-muted-foreground">Powered by an enterprise-grade voice platform used to run thousands of phone agents worldwide. Low latency and natural UK voices.</p>
             </div>
             <div>
               <div className="w-12 h-12 rounded-full bg-secondary text-primary mx-auto flex items-center justify-center mb-4">
@@ -106,7 +114,7 @@ export const FAQ = () => {
                 </svg>
               </div>
               <h4 className="font-bold text-foreground mb-2">UK-first and compliance-aware</h4>
-              <p className="text-sm text-muted-foreground">Designed around UK calling habits. Configured to align with UK GDPR and PECR guidance for inbound and warm outbound calls.</p>
+              <p className="text-sm text-muted-foreground">Designed around UK calling habits and configured to align with UK GDPR and PECR guidance.</p>
             </div>
             <div>
               <div className="w-12 h-12 rounded-full bg-secondary text-primary mx-auto flex items-center justify-center mb-4">
@@ -115,8 +123,8 @@ export const FAQ = () => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                 </svg>
               </div>
-              <h4 className="font-bold text-foreground mb-2">Done-for-you, not DIY tech</h4>
-              <p className="text-sm text-muted-foreground">We handle call-flow design, AI configuration, telephony setup and optimisation. Your team just sees more booked appointments.</p>
+              <h4 className="font-bold text-foreground mb-2">Guided setup, not DIY tech</h4>
+              <p className="text-sm text-muted-foreground">We help you set up the call flow, AI configuration and telephony, so you don't have to build any of it.</p>
             </div>
           </div>
         </motion.div>
