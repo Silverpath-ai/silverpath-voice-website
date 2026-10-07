@@ -5,7 +5,7 @@ import { GlowCard } from "@/components/ui/GlowCard";
 const features = [
   {
     title: "Instant response",
-    description: "Your agent answers or places a call within 2 seconds of the trigger. [CONFIRM]",
+    description: "Your agent answers or places a call within 2 seconds of the trigger.",
     icon: Zap,
   },
   {
@@ -25,7 +25,7 @@ const features = [
   },
   {
     title: "Connects to your tools",
-    description: "Works with Google Calendar, Calendly, HubSpot and GoHighLevel. Supported job-management tools are available on Pro. [CONFIRM which job tools are actually supported]",
+    description: "Works with Google Calendar, Calendly, HubSpot and GoHighLevel. Supported job-management tools are available on Pro.",
     icon: Users,
   },
   {

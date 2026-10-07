@@ -46,7 +46,7 @@ export const Footer = () => {
 
         {/* Bottom Bar */}
         <div className="border-t border-black/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-muted-foreground">
-          <p>© 2025 Silverpath AI Ltd. All rights reserved. Registered in Scotland, United Kingdom.</p>
+          <p>© 2026 Silverpath AI Ltd. All rights reserved. Registered in Scotland, United Kingdom.</p>
           <div className="flex items-center gap-4">
             <a href="#" className="hover:text-foreground transition-colors">Privacy Policy</a>
             <span className="hidden md:inline">·</span>
