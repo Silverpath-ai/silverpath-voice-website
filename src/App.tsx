@@ -1,7 +1,7 @@
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { Hero } from "@/components/home/Hero";
-// import { TrustStrip } from "@/components/home/TrustStrip";
+import { TrustStrip } from "@/components/home/TrustStrip";
 import { FeaturesGrid } from "@/components/home/FeaturesGrid";
 import { ProblemROI } from "@/components/home/ProblemROI";
 import { HowItWorks } from "@/components/home/HowItWorks";
@@ -23,7 +23,7 @@ function App() {
         <Navbar />
       <main>
         <Hero />
-        {/* <TrustStrip /> */}
+        <TrustStrip />
         <FeaturesGrid />
         <ProblemROI />
         <HowItWorks />
