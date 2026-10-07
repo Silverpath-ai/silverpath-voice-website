@@ -57,7 +57,7 @@ export const Hero = () => {
               transition={{ duration: 0.6, delay: 0.3 }}
               className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-2xl mx-auto lg:mx-0 mb-10"
             >
-              Silverpath answers your calls, takes the details, checks your diary and books the work. Day or night, including when you're up a ladder.
+              Silvia answers your calls, takes the details, checks your diary and books the work. Day or night, including when you're up a ladder.
             </motion.p>
 
             <motion.div

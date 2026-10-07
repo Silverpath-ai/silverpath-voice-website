@@ -77,6 +77,29 @@ export const TrustStrip = () => {
               </span>
             </motion.div>
 
+            {/* Vertical Divider */}
+            <div className="hidden md:block w-px h-32 bg-black/5 shrink-0" />
+
+            {/* Techscaler */}
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              className="group flex flex-col items-center gap-5 cursor-pointer flex-1 py-8 px-4 rounded-3xl hover:bg-slate-50/50 hover:shadow-[0_0_40px_rgba(0,255,255,0.12)] transition-all duration-500"
+            >
+              <div className="h-20 md:h-24 flex items-center justify-center">
+                <img 
+                  src="/techscaler.png" 
+                  alt="Techscaler Logo" 
+                  className="max-h-12 md:max-h-16 w-auto object-contain mix-blend-multiply grayscale opacity-90 group-hover:grayscale-0 group-hover:opacity-100 transform group-hover:scale-105 transition-all duration-300" 
+                />
+              </div>
+              <span className="uppercase font-mono text-xs tracking-[0.2em] text-slate-600 font-bold group-hover:text-primary transition-colors duration-300">
+                Techscaler
+              </span>
+            </motion.div>
+
           </div>
         </div>
       </div>
