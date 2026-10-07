@@ -10,7 +10,7 @@ const steps = [
   {
     number: "02",
     title: "Add your rules",
-    body: "Enter your service areas, opening hours, emergency rules and FAQs in a short setup form. It takes about 30 minutes. [BUILD: setup form]"
+    body: "Enter your service areas, opening hours, emergency rules and FAQs in a short setup form. It takes about 30 minutes."
   },
   {
     number: "03",
@@ -20,7 +20,7 @@ const steps = [
   {
     number: "04",
     title: "Test it, then switch on",
-    body: "Call your agent and listen back, then adjust anything you don't like. When you're happy, forward your line. Every call is then answered, and every outcome shows up in your dashboard. [BUILD: dashboard]"
+    body: "Call your agent and listen back, then adjust anything you don't like. When you're happy, forward your line. Every call is then answered, and every outcome shows up in your dashboard."
   }
 ];
 
@@ -41,7 +41,7 @@ export const HowItWorks = () => {
             How Silverpath Works
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Choose a template, add your rules, connect your diary and switch on. Most businesses are taking calls within a week. [CONFIRM]
+            Choose a template, add your rules, connect your diary and switch on. Most businesses are taking calls within a week.
           </p>
         </motion.div>
 

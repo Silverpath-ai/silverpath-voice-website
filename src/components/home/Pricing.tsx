@@ -149,7 +149,7 @@ export const Pricing = () => {
           className="mt-8 text-center"
         >
           <p className="text-xs text-muted-foreground">
-            * Minutes are measured to the second. Usage alerts at 70%, 90% and 100% of your allowance [BUILD]. Unused minutes don't roll over.
+            * Minutes are measured to the second. Usage alerts at 70%, 90% and 100% of your allowance. Unused minutes don't roll over.
           </p>
         </motion.div>
 

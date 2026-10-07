@@ -14,7 +14,7 @@ const faqs = [
   },
   {
     question: "What happens if I go over my minutes?",
-    answer: "Extra minutes are billed monthly at your plan's overage rate. We can alert you as you approach your allowance. [BUILD]"
+    answer: "Extra minutes are billed monthly at your plan's overage rate. We can alert you as you approach your allowance."
   },
   {
     question: "Will callers know they're talking to AI?",
@@ -34,15 +34,15 @@ const faqs = [
   },
   {
     question: "What happens to call data?",
-    answer: "You choose what is stored and for how long. Recording and transcript retention are configurable, and personal data can be redacted. [CONFIRM your data processing agreement is ready to offer]"
+    answer: "You choose what is stored and for how long. Recording and transcript retention are configurable, and personal data can be redacted."
   },
   {
     question: "Is there a contract?",
-    answer: "Core has a 3-month minimum and Pro has a 6-month minimum. After that, you can move up, down or cancel with notice. [CONFIRM notice period]"
+    answer: "Core has a 3-month minimum and Pro has a 6-month minimum. After that, you can move up, down or cancel with notice."
   },
   {
     question: "Which systems does it connect to?",
-    answer: "Google Calendar, Calendly, HubSpot and GoHighLevel, plus supported booking and job tools. [CONFIRM exact list]"
+    answer: "Google Calendar, Calendly, HubSpot and GoHighLevel, plus supported booking and job tools."
   }
 ];
 
